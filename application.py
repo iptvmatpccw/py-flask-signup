@@ -144,14 +144,14 @@ def show_users():
 
 @application.errorhandler(404)
 def not_found_error(error):
-    print u'{ "Page Not Found": "%s" }' % error
+    print u'{ "404 Page Not Found": "%s" }' % error
     theme = application.config['THEME']
     return flask.render_template('404.html', theme=theme, title='404 File Not Found'), 404
 
 @application.errorhandler(500)
 def internal_error(error):
     db.session.rollback()
-    print u'{ "Reason": "%s" }' % error
+    print u'{ "500 Reason": "%s" }' % error
     theme = application.config['THEME']
     return flask.render_template('500.html', theme=theme, title='Unexpected Error Occured'), 500
 
